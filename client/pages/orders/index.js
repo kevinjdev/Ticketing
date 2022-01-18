@@ -1,4 +1,4 @@
-const OrderIndex = (orders) => {
+const OrderIndex = ({ orders }) => {
   return (
     <ul>
       {orders.map((order) => {

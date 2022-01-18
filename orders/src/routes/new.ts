@@ -29,6 +29,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
+    console.log('creating order');
     const { ticketId } = req.body;
     // Find the ticket the user is trying to order in the database
     const ticket = await Ticket.findById(ticketId);
@@ -54,7 +55,6 @@ router.post(
       ticket,
     });
     await order.save();
-
     // Publish an event saying that an order was created
     new OrderCreatedPublisher(natsWrapper.client).publish({
       id: order.id,
@@ -67,7 +67,6 @@ router.post(
         price: ticket.price,
       },
     });
-
     res.status(201).send(order);
   }
 );

@@ -1,7 +1,8 @@
-import { Router } from 'next/router';
+import { useRouter } from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const TicketShow = ({ ticket }) => {
+  const router = useRouter();
   const { doRequest, errors } = useRequest({
     url: '/api/orders',
     method: 'post',
@@ -9,22 +10,24 @@ const TicketShow = ({ ticket }) => {
       ticketId: ticket.id,
     },
     onSuccess: (order) =>
-      Router.push('/orders/[orderId]', `/orders/${order.id}`),
+      router.push('/orders/[orderId]', `/orders/${order.id}`),
   });
-  <div>
-    <h1>{ticket.title}</h1>
-    <h4>Price: {ticket.price}</h4>
-    {errors}
-    <button onClick={() => doRequest()} className="btn btn-primary">
-      Purchase
-    </button>
-  </div>;
+
+  return (
+    <div>
+      <h1>{ticket.title}</h1>
+      <h4>Price: {ticket.price}</h4>
+      {errors}
+      <button onClick={() => doRequest()} className="btn btn-primary">
+        Purchase
+      </button>
+    </div>
+  );
 };
 
-TicketShow.getIntitialProps = async (context, client) => {
+TicketShow.getInitialProps = async (context, client) => {
   const { ticketId } = context.query;
   const { data } = await client.get(`/api/tickets/${ticketId}`);
-  console.log('TicketShow get intial props:', data);
   return { ticket: data };
 };
 
