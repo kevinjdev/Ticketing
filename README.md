@@ -26,23 +26,24 @@ Clone the repository to your local machine by running the following command in a
 `https://github.com/kevinjdev/Ticketing.git`
 
 ### Prerequisites
-* Install skaffold to manage deploying the application (https://skaffold.dev/docs/install/)
+* Install Skaffold to manage deploying the application (https://skaffold.dev/docs/install/)
 * Install Docker Desktop and create an account (https://www.docker.com/get-started)
+* Enable Kubernetes inside Docker Desktop under the Settings menu
+* Add **NGINX Ingress Controller** to your Kubernetes Cluster (https://kubernetes.github.io/ingress-nginx/deploy/)
 * Edit skaffold.yaml and replace all instances of 'kevinjdev' with your docker Id
 * In the infra directory replace all instances of 'kevinjdev' with your docker Id
 * In the client/api/build-client.js file comment out baseURL 'http://www.kevinjdev.xyz/' and uncomment the ingress-nginx-controller address
 * In your local computer's host file add the following on a new line: **127.0.0.1 ticketing.dev**
+* Add two secrets for JWT_KEY and STRIPE_KEY to your project with the following commands. You can obtain a Stripe API key from (https://www.stripe.com)
+a) kubectl create secret generic jwt-secret --from-literal=JWT_KEY=someRandomString
+b) kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=yourSecretStripeKey
 
 ### How To Run
-... 
 ```
-mkdir build
-cd build
-cmake ..
-make
-./environment
+Run the following command from inside your project folder
+skaffold dev
 ```
 ### Explanation of the Running Program
-
+The command skaffold dev will ...
 ## Nanodegree Completion Certificate
 <img src="microservices-kevin-jaeger.jpg" width="600" height="400" />
