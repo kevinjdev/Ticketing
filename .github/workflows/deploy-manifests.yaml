@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'infra/**'
-
+# apply all kubernetes files in project
 jobs:
   build:
     runs-on: ubuntu-latest
