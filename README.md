@@ -26,9 +26,12 @@ Clone the repository to your local machine by running the following command in a
 `https://github.com/kevinjdev/Ticketing.git`
 
 ### Prerequisites
-* ...
-* ...
-* ...
+* Install skaffold to manage deploying the application (https://skaffold.dev/docs/install/)
+* Install Docker Desktop and create an account (https://www.docker.com/get-started)
+* Edit skaffold.yaml and replace all instances of 'kevinjdev' with your docker Id
+* In the infra directory replace all instances of 'kevinjdev' with your docker Id
+* In the client/api/build-client.js file comment out baseURL 'http://www.kevinjdev.xyz/' and uncomment the ingress-nginx-controller address
+* In your local computer's host file add the following on a new line: **127.0.0.1 ticketing.dev**
 
 ### How To Run
 ... 
