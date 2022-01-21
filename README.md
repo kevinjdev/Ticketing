@@ -18,8 +18,7 @@ After building a simple React & Node microservice application in Javascript at t
 5. *Running Docker Desktop and Kubernetes might cause lagging on computer* -> **Run a k8s cluster in Google Cloud and develop almost as quickly as local**
 6. *Concurrency issues not addressed* -> **Utilize Nats Streaming Server to ensure message receipt is acknowledged and version messages being processed by services**
 
-## Architecture
-<img src="architecture.png" width="600" height="400" />
+<img src="architecture.png" width="800" height="600" />
 
 ## Getting Started
 Clone the repository to your local machine by running the following command in a terminal window or command prompt from the location you wish to copy the folder
