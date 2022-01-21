@@ -2,6 +2,8 @@
 A ticketing application utilizing microservices architecture from Udemy's Microservices With Node JS and React Course.
 In this project, I learned how to build a microservices application using React with Next JS on the front end, and Typescript Node services utilizing Mongo Database, and Nats Streaming Server messaging service on the back end.
 
+<img src="architecture.png" width="800" height="600" />
+
 ## Application Functionality
 - Users can list a ticket for sale
 - Other users can purchase the ticket
@@ -17,8 +19,6 @@ After building a simple React & Node microservice application in Javascript at t
 4. *Difficult to test event flows* -> **Write tests using Jest and mock the Nat Streaming Server dependency**
 5. *Running Docker Desktop and Kubernetes might cause lagging on computer* -> **Run a k8s cluster in Google Cloud and develop almost as quickly as local**
 6. *Concurrency issues not addressed* -> **Utilize Nats Streaming Server to ensure message receipt is acknowledged and version messages being processed by services**
-
-<img src="architecture.png" width="800" height="600" />
 
 ## Getting Started
 Clone the repository to your local machine by running the following command in a terminal window or command prompt from the location you wish to copy the folder
