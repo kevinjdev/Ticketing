@@ -37,13 +37,16 @@ Clone the repository to your local machine by running the following command in a
 * Add two secrets for JWT_KEY and STRIPE_KEY to your project with the following commands. You can obtain a Stripe API key from (https://www.stripe.com)
 a) kubectl create secret generic jwt-secret --from-literal=JWT_KEY=someRandomString
 b) kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=yourSecretStripeKey
+* Edit the following file with your public stripe key...
 
-### How To Run
+### How To Run Locally
 ```
 Run the following command from inside your project folder
 skaffold dev
 ```
 ### Explanation of the Running Program
 The command skaffold dev will ...
+### Deploying to a Cloud Service Provider
+.....
 ## Nanodegree Completion Certificate
 <img src="microservices-kevin-jaeger.jpg" width="600" height="400" />
