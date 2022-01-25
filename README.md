@@ -1,10 +1,11 @@
 # Ticketing
-A ticketing application utilizing microservices architecture from Udemy's Microservices With Node JS and React Course.
-In this project, I learned how to build a microservices application using React with Next JS on the front end, and Typescript Node services utilizing Mongo Database, and Nats Streaming Server messaging service on the back end.
+A ticketing application utilizing microservices architecture from Udemy's Microservices With Node.js and React Course.
+In this project, I learned how to build a microservices application using React with Next.js on the front end, and Node.js services written in Typescript utilizing MongoDB, and Nats Streaming Server messaging service on the back end.
 
 <img src="architecture.png" width="800" height="600" />
 
 ## Application Functionality
+This application allows users to buy and sell tickets. The following requirements were implemented in this project.
 - Users can list a ticket for sale
 - Other users can purchase the ticket
 - Any user can sell or purchase tickets
@@ -37,16 +38,25 @@ Clone the repository to your local machine by running the following command in a
 * Add two secrets for JWT_KEY and STRIPE_KEY to your project with the following commands. You can obtain a Stripe API key from (https://www.stripe.com)
 a) kubectl create secret generic jwt-secret --from-literal=JWT_KEY=someRandomString
 b) kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=yourSecretStripeKey
-* Edit the following file with your public stripe key...
+* Edit the stripeKey prop the <StripeCheckout /> component inside client/pages/orders/[orderId].js with your public stripe key 
 
 ### How To Run Locally
 ```
-Run the following command from inside your project folder
+Run the following command from inside your project folder through a terminal window
 skaffold dev
+Once the application is up and running, open a browser window and navigate to ticketing.dev to access the running application
 ```
 ### Explanation of the Running Program
-The command skaffold dev will ...
+The command skaffold dev will execute the docker files in each folder to build the images. Once the images are built then through Kubernetes, the containers will be created and deployed. The client application is displayed for the user through the browser, and as requests are made to the back end, the requests are routed to the appropriate service through use of Ingress NGINX. Authentication is performed using JWTs. Events are sent between services using NATS Streaming Server, and data storage is handled with MongoDB for each service except the expiration service. The expiration service utilizes Redis to store order expiration times. The following use case will test most of the functionality of the application.
+1) Click the Sign Up button, then create an account with a username and password.
+2) Click Sell Tickets, and create a ticket for sale, setting a title and price.
+3) Once created click the View link on ticket, then click Purchase.
+4) Click Pay With Card
+5) In the Stripe payment window, enter a Credit Card of 4242 4242 4242 4242 (for test) with a data and CVC number then click submit.
+6) A green check mark should appear, then you will be routed to the My Orders page and see your ticket name with the word 'complete' appended. 
+
 ### Deploying to a Cloud Service Provider
-.....
+After building and running the application locally, I successfully deployed it through DigitalOcean using Github Workflows. Upon a successful pull request the workflows will build run the appropriate tests, build the images on GitHub servers, and deploy the application to Digital Ocean. 
+
 ## Nanodegree Completion Certificate
 <img src="microservices-kevin-jaeger.jpg" width="600" height="400" />
