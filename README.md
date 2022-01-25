@@ -45,6 +45,7 @@ b) kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=yourSec
 Run the following command from inside your project folder through a terminal window
 skaffold dev
 Once the application is up and running, open a browser window and navigate to ticketing.dev
+If using chrome, you may receive a site security warning. Type thisisunsafe to continue
 ```
 ### Explanation of the Running Program
 The command skaffold dev will execute the docker files in each folder to build the images. Once the images are built then through Kubernetes, the containers will be created and deployed. The client application is displayed for the user through the browser, and as requests are made to the back end, the requests are routed to the appropriate service through use of Ingress NGINX. Authentication is performed using JWTs. Events are sent between services using NATS Streaming Server, and data storage is handled with MongoDB for each service except the expiration service. The expiration service utilizes Redis to store order expiration times. The following use case will test most of the functionality of the application.
