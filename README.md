@@ -33,7 +33,6 @@ Clone the repository to your local machine by running the following command in a
 * Add **NGINX Ingress Controller** to your Kubernetes Cluster (https://kubernetes.github.io/ingress-nginx/deploy/)
 * Edit skaffold.yaml and replace all instances of 'kevinjdev' with your docker Id
 * In the infra directory replace all instances of 'kevinjdev' with your docker Id
-* In the client/api/build-client.js file comment out baseURL 'http://www.kevinjdev.xyz/' and uncomment the ingress-nginx-controller address
 * In your local computer's host file add the following on a new line: **127.0.0.1 ticketing.dev**
 * Add two secrets for JWT_KEY and STRIPE_KEY to your project with the following commands. You can obtain a Stripe API key from (https://www.stripe.com)
 a) kubectl create secret generic jwt-secret --from-literal=JWT_KEY=someRandomString
@@ -57,7 +56,7 @@ The command skaffold dev will execute the docker files in each folder to build t
 6) A green check mark should appear, then you will be routed to the My Orders page and see your ticket name with the word 'complete' appended. 
 
 ### Deploying to a Cloud Service Provider
-After building and running the application locally, I successfully deployed it through DigitalOcean using Github Workflows. Upon a successful pull request the workflows will build run the appropriate tests, build the images on GitHub servers, and deploy the application to Digital Ocean. 
+After building and running the application locally, I successfully deployed it through DigitalOcean using Github Workflows. Upon a successful pull request the workflows are configured to run the appropriate tests, build the images on GitHub servers, and deploy the application to Digital Ocean. 
 
 ## Nanodegree Completion Certificate
 <img src="microservices-kevin-jaeger.jpg" width="600" height="400" />
